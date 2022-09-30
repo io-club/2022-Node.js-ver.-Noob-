@@ -26,7 +26,8 @@
     - 运行第一个程序
 
     ```
-        node [你的文件名].js
+        1.node [你的文件名].js
+        2.嵌入在html中
     ```
 
     - 深入一些 
@@ -273,9 +274,12 @@ _此部分主要讲ES的新特性_
 
 
             ```
-        + Promise
+        + Promis
+
+            _一个 Promise 对象代表一个在这个 promise 被创建出来时不一定已知值的代理。它让你能够把异步操作最终的成功返回值或者失败原因和相应的处理程序关联起来。这样使得异步方法可以像同步方法那样返回值：异步方法并不会立即返回最终的值，而是会返回一个 promise，以便在未来某个时候把值交给使用者。_
+
             ```
-                a.promise风格
+                a. promise风格
 
                     axios.request(method).then(
                         res => console.log(res)
@@ -283,4 +287,60 @@ _此部分主要讲ES的新特性_
                         err => console.log(err)
                     )
                     
+                    axios.request(method).then(
+                            res => console.log(res)
+                            err => console.log(err)
+                        )
+                b. promise状态
+                    pending
+                    fulfilled
+                    rejected
+                c. resolve & reject
+                    Promise.resolve([DATA])
+                    返回含有data数据的fulfilled的promise对象
+                    Promise.reject([REASON])
+                    返回失败原因为reason的rejected的promise对象
             ```
+            ![Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
+
+        + import & export
+            1. export
+            ```
+                a. export
+                    export let obj={...}
+                    export let obj2={...}
+                    export let obj3={...}
+                b. export default
+                    export default function fun(){
+                        return true
+                    }
+                    //export default 只能有一个
+                c. export from 
+                    export * from …;
+                    export * as name1 from …;
+                    export { name1, name2, …, nameN } from …;
+                    export { import1 as name1, import2 as name2, …, nameN } from …;
+            ```
+            1. import
+
+            ```
+                a. import
+                    import {obj, obj1, obj2} from "[PATH].js"
+                    import * as OBJ from "[PATH].js"
+                b.  特殊的import
+                    const OBJ = import("[PATH]")
+            ```
+        + async & await
+
+            ```
+                a.async 函数
+                    返回一个promise对象
+                b. await 
+                    let a = await new Promise((resolve, reject)=>{
+                        resolve('OK')
+                    })
+                    若await成功, 则返回 值或data
+                    若await失败, 则返回 失败原因, 可以使用try...catch或.then接收错误
+
+            ```
+            
